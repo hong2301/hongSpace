@@ -1,6 +1,8 @@
 const express = require('express')
 const cors = require('cors')
 const joi = require('joi')
+require('dotenv').config();
+require('dotenv-flow').config();
 
 const app = express()
 
@@ -9,7 +11,7 @@ app.use(cors())
 app.use(express.urlencoded({ extended: false }))
 app.use(express.json())
 
-// 自定义响应方法 (放在常规中间件中)
+// 自定义响应方法
 app.use((req, res, next) => {
     res.cc = function (err, status = 1) {
         res.send({
@@ -24,7 +26,7 @@ app.use((req, res, next) => {
 const userRouter = require('./router/user')
 app.use('/api', userRouter)
 
-// 错误处理中间件 (放在最后)
+// 错误处理中间件
 app.use((err, req, res, next) => {
     // Joi验证错误
     if (err instanceof joi.ValidationError) return res.cc(err)
@@ -32,7 +34,10 @@ app.use((err, req, res, next) => {
     res.cc(err)
 })
 
-port = '8888'
-app.listen(port, () => {
-    console.log(`Server running at http://127.0.0.1:${port}`)
-})
+
+const port = process.env.SERVER_PORT || 6060;
+const host = process.env.SERVER_HOST || '127.0.0.1';
+
+app.listen(port, host, () => {
+    console.log(`Server running at http://${host}:${port}`);
+});

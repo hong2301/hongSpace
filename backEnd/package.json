@@ -6,12 +6,15 @@
   "private": true,
   "license": "MIT",
   "scripts": {
-    "dev": "node src/app.js"
+    "dev": "NODE_ENV=development node src/app.js",
+    "start": "NODE_ENV=production node src/app.js"
   },
   "dependencies": {
     "@escook/express-joi": "^1.1.1",
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
+    "dotenv": "^17.2.1",
+    "dotenv-flow": "^4.1.0",
     "express": "^4.17.1",
     "express-jwt": "^5.3.3",
     "joi": "^17.13.3",
