@@ -1,8 +1,9 @@
 {
   "name": "hong-space-back",
-  "description": "This hong's space",
+  "description": "This hong's spaceBack",
   "author": "hong<honononong@cloud.com>",
   "version": "0.0.0",
+  "private": true,
   "license": "MIT",
   "scripts": {
     "dev": "node app.js"
