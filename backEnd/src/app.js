@@ -3,6 +3,7 @@ const cors = require('cors')
 const joi = require('joi')
 require('dotenv').config();
 require('dotenv-flow').config();
+const { getLocalIP } = require('../src/utils/index.js');
 
 const app = express()
 
@@ -36,7 +37,7 @@ app.use((err, req, res, next) => {
 
 
 const port = process.env.SERVER_PORT || 6060;
-const host = process.env.SERVER_HOST || '127.0.0.1';
+const host = process.env.ENV === 'production' ? getLocalIP() : process.env.SERVER_HOST;
 
 app.listen(port, host, () => {
     console.log(`Server running at http://${host}:${port}`);

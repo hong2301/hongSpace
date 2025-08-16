@@ -5,6 +5,7 @@
   "version": "0.0.0",
   "private": true,
   "license": "MIT",
+  "type": "commonjs",
   "scripts": {
     "dev": "cross-env ENV=development node -r dotenv/config src/app.js dotenv_config_path=.env.development",
     "start": "cross-env ENV=production node -r dotenv/config src/app.js dotenv_config_path=.env.production"
