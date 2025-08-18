@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "李泽枫的空间", // 浏览器标签页标题
-  description: "这里是数字人生", // 浏览器标签页描述
+  description: "数字人生", // 浏览器标签页描述
 };
 
 export default function RootLayout({

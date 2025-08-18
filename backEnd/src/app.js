@@ -1,9 +1,14 @@
 const express = require('express')
 const cors = require('cors')
 const joi = require('joi')
-require('dotenv').config();
-require('dotenv-flow').config();
+const dotenv = require('dotenv');
+const path = require('path');
 const { getLocalIP } = require('../src/utils/index.js');
+
+// 加载环境变量
+const envFile = process.env.ENV === 'production' ? '../.env.production' : '../.env.development';
+dotenv.config({ path: path.resolve(__dirname, envFile) });
+
 
 const app = express()
 
@@ -35,7 +40,7 @@ app.use((err, req, res, next) => {
     res.cc(err)
 })
 
-
+// 启动服务
 const port = process.env.SERVER_PORT || 6060;
 const host = process.env.ENV === 'production' ? getLocalIP() : process.env.SERVER_HOST;
 
